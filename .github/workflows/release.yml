@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  CN_APPLICATION: "com.foobar.app"
+  CN_APPLICATION: "sudocode/foobar"
 
 jobs:
   draft:

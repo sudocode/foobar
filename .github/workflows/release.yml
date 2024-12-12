@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
           node-version: "20"
       - name: Install stable toolchain
@@ -56,7 +56,6 @@ jobs:
       - name: build Tauri app for Windows, Linux
         if: matrix.os != 'macos-latest'
         run: |
-          npm install -g bun
           bun install --frozen-lockfile
           bunx tauri build
         env:
@@ -67,7 +66,6 @@ jobs:
         if: matrix.os == 'macos-latest'
         run: |
           rustup target add x86_64-apple-darwin
-          npm install -g bun
           bun install --frozen-lockfile
           bunx tauri build -- --target x86_64-apple-darwin
           bunx tauri build -- --target aarch64-apple-darwin
